@@ -6,9 +6,7 @@
   <title>KPMed_Alert News</title>
   <style>
     /* Basic Reset */
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,10 +34,9 @@
       font-size: 1.8rem;
       letter-spacing: 2px;
     }
-    .logo svg {
-      width: 30px;
-      height: 30px;
-      fill: white;
+    .logo img {
+        width: 40px; /* Controls logo size */
+        height: 40px;
     }
     nav ul {
       list-style: none;
@@ -55,15 +52,8 @@
       border-radius: 4px;
       transition: background-color 0.3s ease;
     }
-    nav ul li.active,
-    nav ul li:hover {
-      background-color: #66bb6a;
-      color: white;
-    }
-    .search-bar {
-      margin-left: auto;
-      position: relative;
-    }
+    nav ul li.active, nav ul li:hover { background-color: #66bb6a; color: white; }
+    .search-bar { margin-left: auto; position: relative; }
     .search-bar input[type="text"] {
       padding: 0.4rem 1.2rem 0.4rem 0.8rem;
       border-radius: 20px;
@@ -90,19 +80,9 @@
       padding: 1rem 1.5rem;
       transition: box-shadow 0.3s ease;
     }
-    .post:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .post h2 {
-      margin: 0 0 0.3rem 0;
-      color: #2e7d32;
-      font-size: 1.3rem;
-    }
-    .post .date {
-      font-size: 0.85rem;
-      color: #558b2f;
-      margin-bottom: 0.7rem;
-    }
+    .post:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .post h2 { margin: 0 0 0.3rem 0; color: #2e7d32; font-size: 1.3rem; }
+    .post .date { font-size: 0.85rem; color: #558b2f; margin-bottom: 0.7rem; }
     .post .category {
       font-size: 0.9rem;
       font-weight: 600;
@@ -113,37 +93,38 @@
       display: inline-block;
       margin-bottom: 0.8rem;
     }
+    /* Admin Panel Styling */
+    .admin-section {
+        text-align: center;
+        margin: 2rem auto;
+    }
+    #adminLoginBtn {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+    }
     .admin-panel {
+      display: none; /* Hidden by default */
       max-width: 900px;
       margin: 2rem auto 3rem;
       padding: 1rem 2rem;
       background: #c8e6c9;
       border-radius: 8px;
     }
-    .admin-panel h3 {
-      margin-top: 0;
-      color: #2e7d32;
-    }
-    .admin-panel label {
-      display: block;
-      margin-top: 1rem;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-    .admin-panel input[type="text"],
-    .admin-panel input[type="date"],
-    .admin-panel textarea,
-    .admin-panel select {
+    .admin-panel h3 { margin-top: 0; color: #2e7d32; }
+    .admin-panel label { display: block; margin-top: 1rem; margin-bottom: 0.3rem; font-weight: 600; }
+    .admin-panel input, .admin-panel textarea, .admin-panel select {
       width: 100%;
       padding: 0.5rem;
       border-radius: 6px;
       border: 1px solid #81c784;
       font-size: 1rem;
     }
-    .admin-panel textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
+    .admin-panel textarea { resize: vertical; min-height: 80px; }
     .admin-panel button {
       margin-top: 1.2rem;
       background-color: #388e3c;
@@ -153,10 +134,6 @@
       font-size: 1rem;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .admin-panel button:hover {
-      background-color: #2e7d32;
     }
     footer {
       text-align: center;
@@ -166,14 +143,7 @@
       border-top: 1px solid #81c784;
       background: #f1f8e9;
     }
-    footer a {
-      color: #2e7d32;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
+    footer a { color: #2e7d32; text-decoration: none; font-weight: 600; }
   </style>
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
@@ -181,46 +151,38 @@
 </head>
 <body>
   <header>
-    <div class="logo" aria-label="KPMed_Alert News logo">
-      <!-- Caduceus SVG Icon -->
-      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" >
-        <g stroke="white" stroke-width="2" fill="none">
-          <path d="M32 2v60M24 10c0 8 16 8 16 0" />
-          <path d="M20 20c-8 4-4 16 4 16s8 8 0 16M44 20c8 4 4 16-4 16s-8 8 0 16" />
-          <circle cx="20" cy="18" r="4" fill="white" />
-          <circle cx="44" cy="18" r="4" fill="white" />
-        </g>
-      </svg>
+    <div class="logo">
+      <!-- Your new logo image goes here. Save your image as 'logo.png' in the same folder. -->
+      <img src="logo.png" alt="KPMed_Alert News Logo">
       KPMed_Alert News
     </div>
     <nav>
-      <ul id="category-menu" role="list">
-        <li data-category="all" class="active" tabindex="0" aria-selected="true">All</li>
-        <li data-category="Medical Exams" tabindex="0">Medical Exams</li>
-        <li data-category="Job Notifications" tabindex="0">Job Notifications</li>
-        <li data-category="Research Updates" tabindex="0">Research Updates</li>
-        <li data-category="Health Advisories" tabindex="0">Health Advisories</li>
+      <ul id="category-menu">
+        <li data-category="all" class="active">All</li>
+        <li data-category="Medical Exams">Medical Exams</li>
+        <li data-category="Job Notifications">Job Notifications</li>
+        <li data-category="Research Updates">Research Updates</li>
+        <li data-category="Health Advisories">Health Advisories</li>
       </ul>
     </nav>
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search news..." aria-label="Search news" />
+      <input type="text" id="searchInput" placeholder="Search news..." />
     </div>
   </header>
   <main>
-    <section class="posts" id="posts" aria-live="polite" aria-label="News posts">
-      <!-- Posts will appear here dynamically -->
-      <p>Loading posts...</p>
-    </section>
+    <section class="posts" id="posts"><p>Loading posts...</p></section>
 
-    <section class="admin-panel" aria-label="Add new medical news post">
+    <div class="admin-section">
+        <button id="adminLoginBtn">Admin Login</button>
+    </div>
+
+    <section class="admin-panel" id="adminPanel">
       <h3>Upload New Medical News Post</h3>
       <form id="postForm">
         <label for="postTitle">Title</label>
         <input type="text" id="postTitle" required />
-
         <label for="postDesc">Short Description</label>
         <textarea id="postDesc" required></textarea>
-
         <label for="postCategory">Category</label>
         <select id="postCategory" required>
           <option value="" disabled selected>Select category</option>
@@ -229,13 +191,10 @@
           <option value="Research Updates">Research Updates</option>
           <option value="Health Advisories">Health Advisories</option>
         </select>
-
         <label for="postDate">Post Date</label>
         <input type="date" id="postDate" required />
-
         <label for="postExpiryDate">Expiry Date</label>
         <input type="date" id="postExpiryDate" required />
-
         <button type="submit">Add News Post</button>
       </form>
     </section>
@@ -263,28 +222,25 @@
     const categoryMenu = document.getElementById('category-menu');
     const searchInput = document.getElementById('searchInput');
     const postForm = document.getElementById('postForm');
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    const adminPanel = document.getElementById('adminPanel');
 
-    let posts = []; // Will store fetched posts
+    // !!! SET YOUR SECRET PASSWORD HERE !!!
+    const ADMIN_PASSWORD = "YOUR_SECRET_PASSWORD_HERE"; 
+
+    let posts = [];
     let filterCategory = 'all';
     let filterSearch = '';
 
-    // Function to render posts with filters
     function renderPosts() {
       postsContainer.innerHTML = '';
       const today = new Date();
       
       let filteredPosts = posts.filter(post => {
-        // Only show posts that have expiryDate >= today
         if (post.expiryDate.toDate() < today) return false;
-
         if (filterCategory !== 'all' && post.category !== filterCategory) return false;
-
-        if (filterSearch) {
-          let searchLower = filterSearch.toLowerCase();
-          if (!post.title.toLowerCase().includes(searchLower) &&
-              !post.description.toLowerCase().includes(searchLower)) {
-            return false;
-          }
+        if (filterSearch && !post.title.toLowerCase().includes(filterSearch.toLowerCase()) && !post.description.toLowerCase().includes(filterSearch.toLowerCase())) {
+          return false;
         }
         return true;
       });
@@ -294,24 +250,20 @@
         return;
       }
 
-      // Sort posts by postDate descending
       filteredPosts.sort((a, b) => b.postDate.toDate() - a.postDate.toDate());
-
       filteredPosts.forEach(post => {
         const postElement = document.createElement('article');
         postElement.className = 'post';
-
         postElement.innerHTML = `
           <div class="category">${post.category}</div>
           <h2>${post.title}</h2>
-          <div class="date">Posted: ${post.postDate.toDate().toISOString().slice(0, 10)} &nbsp; | &nbsp; Expires: ${post.expiryDate.toDate().toISOString().slice(0, 10)}</div>
+          <div class="date">Posted: ${post.postDate.toDate().toISOString().slice(0, 10)} | Expires: ${post.expiryDate.toDate().toISOString().slice(0, 10)}</div>
           <p>${post.description}</p>
         `;
         postsContainer.appendChild(postElement);
       });
     }
 
-    // Fetch posts from Firestore and render
     async function fetchPosts() {
       postsContainer.innerHTML = '<p>Loading posts...</p>';
       try {
@@ -319,76 +271,65 @@
         posts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         renderPosts();
       } catch (error) {
-        postsContainer.innerHTML = '<p>Error loading posts. Please try again later.</p>';
-        console.error("Error fetching posts:", error);
+        postsContainer.innerHTML = '<p>Error loading posts. Check Firebase config.</p>';
       }
     }
 
-    // Add new post to Firestore
     async function addPost(post) {
       try {
         await db.collection('medicalNews').add(post);
         alert('News post added successfully!');
-        fetchPosts(); // Refresh posts
+        fetchPosts(); // Refresh posts to show the new one
       } catch (error) {
-        alert('Failed to add post. See console for error.');
-        console.error("Error adding post:", error);
+        alert('Failed to add post. Please check your Firebase setup.');
       }
     }
+    
+    // Admin Login Logic
+    adminLoginBtn.addEventListener('click', () => {
+        const password = prompt('Enter admin password:');
+        if (password === ADMIN_PASSWORD) {
+            adminPanel.style.display = 'block';
+            adminLoginBtn.style.display = 'none'; // Hide login button after success
+        } else if (password !== null) { // User clicked OK but entered wrong password
+            alert('Incorrect password.');
+        }
+    });
 
-    // Listen to form submit
     postForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      const title = document.getElementById('postTitle').value.trim();
-      const description = document.getElementById('postDesc').value.trim();
-      const category = document.getElementById('postCategory').value;
-      const postDateValue = document.getElementById('postDate').value;
-      const expiryDateValue = document.getElementById('postExpiryDate').value;
-
-      if(new Date(expiryDateValue) < new Date(postDateValue)){
-        alert("Expiry date cannot be before post date!");
-        return;
-      }
-
-      if (!title || !description || !category || !postDateValue || !expiryDateValue) {
-        alert('Please fill in all fields.');
-        return;
-      }
-
       const newPost = {
-        title,
-        description,
-        category,
-        postDate: firebase.firestore.Timestamp.fromDate(new Date(postDateValue)),
-        expiryDate: firebase.firestore.Timestamp.fromDate(new Date(expiryDateValue))
+        title: document.getElementById('postTitle').value.trim(),
+        description: document.getElementById('postDesc').value.trim(),
+        category: document.getElementById('postCategory').value,
+        postDate: firebase.firestore.Timestamp.fromDate(new Date(document.getElementById('postDate').value)),
+        expiryDate: firebase.firestore.Timestamp.fromDate(new Date(document.getElementById('postExpiryDate').value))
       };
+      
+      if(newPost.expiryDate.toDate() < newPost.postDate.toDate()){
+        alert("Expiry date cannot be before the post date.");
+        return;
+      }
 
       addPost(newPost);
       postForm.reset();
     });
 
-    // Category filter
     categoryMenu.addEventListener('click', (e) => {
       if (e.target.tagName === 'LI') {
-        [...categoryMenu.children].forEach(li => {
-          li.classList.remove('active');
-          li.setAttribute('aria-selected', 'false');
-        });
+        [...categoryMenu.children].forEach(li => li.classList.remove('active'));
         e.target.classList.add('active');
-        e.target.setAttribute('aria-selected', 'true');
         filterCategory = e.target.getAttribute('data-category');
         renderPosts();
       }
     });
 
-    // Search filter
     searchInput.addEventListener('input', () => {
       filterSearch = searchInput.value.trim();
       renderPosts();
     });
 
-    // Initial fetch of posts
+    // Initial load
     fetchPosts();
   </script>
 </body>
